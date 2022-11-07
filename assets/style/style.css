@@ -66,11 +66,90 @@ button {
 
 .header__logo {
 	font-size: 28px;
+	position: relative;
+	z-index: 9999;
 }
 
 .header__link {
 	font-size: 22px;
 	margin-left: 15px;
+}
+
+.burger {
+	display: none;
+}
+
+.burger__btn {
+	position: relative;
+	z-index: 9999;
+	display: inline-block;
+	width: 30px;
+	height: 3px;
+	border-radius: 5px;
+	background-color: var(--light);
+	transition: .3s all;
+}
+
+.burger__btn::before {
+	position: absolute;
+	content: "";
+	width: 30px;
+	height: 3px;
+	background-color: var(--light);
+	top: -10px;
+	left: 0;
+	border-radius: 5px;
+	transition: .3s all;
+}
+
+.burger__btn::after {
+	position: absolute;
+	content: "";
+	width: 30px;
+	height: 3px;
+	background-color: var(--light);
+	bottom: -10px;
+	left: 0;
+	border-radius: 5px;
+	transition: .3s all;
+}
+
+#burger:checked + .burger__btn {
+	background-color: var(--dark);
+}
+
+#burger:checked + .burger__btn::before {
+	transform: rotate(45deg);
+	top: 0;
+}
+
+#burger:checked + .burger__btn::after {
+	transform: rotate(-45deg);
+	bottom: 0;
+}
+
+.burger__nav {
+	position: absolute;
+	left: 0;
+	top: -200px;
+	width: 100%;
+	padding: 20px;
+	background-color: var(--dark);
+	transition: .6s all;
+}
+
+.burger__link {
+	display: block;
+	text-align: center;
+	font-size: 24px;
+}
+
+.burger__link:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+#burger:checked ~ .burger__nav {
+	top: 57px;
 }
 
 /* HEADER SECTION */
